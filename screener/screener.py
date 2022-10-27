@@ -1,4 +1,4 @@
-# Screener: check ebook files for security issues.
+# Screener: check e-book files for security issues.
 # Copyright (C) 2022 Tom Kuson
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 """Screener
 
-Contains methods to check an ebook file for security issues.
+Contains methods to check an e-book file for security and privacy issues.
 """
 
 import logging
