@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "Screener"
+version = "0.1.0"
+description = "Check ebook files for security and privacy issues."
+license = "LGPL-3.0-only"
+authors = ["Tom Kuson <mail@tjkuson.me>"]
+repository = "https://github.com/tjkuson/screener/"
+
+[tool.poetry.dependencies]
+python = "^3.7.2"
+EbookLib = "^0.17.1"
+beautifulsoup4 = "^4.11.1"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+black = {extras = ["d"], version = "^22.10.0"}
+pytest = "^7.2.0"
+pylint = "^2.15.5"
+
+[tool.black]
+line-length = 88
+target-version = ["py37","py38","py39", "py310"]
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

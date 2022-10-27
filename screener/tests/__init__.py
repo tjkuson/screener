@@ -1,0 +1,1 @@
+from .test_parser import test_contains_javascript
