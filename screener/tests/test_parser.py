@@ -16,7 +16,7 @@
 
 """ Screener tests
 
-Test the screener module. For use with `pytest`.
+Test the screener module; for use with `pytest`.
 """
 
 
