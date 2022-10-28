@@ -34,10 +34,12 @@ class Parser:
 
     def __init__(self, content: bytes) -> None:
         """Store html file."""
+
         self.html = content
 
     def contains_javascript(self) -> bool:
         """Search for JavaScript in html files."""
+
         soup: BeautifulSoup = BeautifulSoup(self.html, "html.parser")
         scripts: ResultSet = soup.find_all("script")
         if scripts:
@@ -48,6 +50,7 @@ class Parser:
 
 def epub_safe(path_to_epub: Path) -> bool:
     """Parse epub to check that it is safe."""
+
     book: EpubBook = read_epub(path_to_epub)
     contains_js: bool = False
     for item in book.get_items_of_type(ITEM_DOCUMENT):
@@ -73,6 +76,7 @@ def init_argparse() -> ArgumentParser:
 
 def main() -> None:
     """Read system args and check e-book files."""
+
     parser: ArgumentParser = init_argparse()
     args: Namespace = parser.parse_args()
     if not args.files:

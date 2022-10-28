@@ -26,6 +26,7 @@ from ..screener import epub_safe
 
 def test_contains_javascript():
     """Test that script can pick up a <script> tag in epub file."""
+
     safe_ebook_path = Path(r"screener/tests/william-shakespeare_richard-ii.epub")
     assert epub_safe(safe_ebook_path)
     unsafe_ebook_path = Path(
