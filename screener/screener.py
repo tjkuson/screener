@@ -20,6 +20,8 @@ Contains methods to check an e-book file for security and privacy issues.
 """
 
 import logging
+import sys
+from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
 from bs4 import BeautifulSoup, ResultSet
@@ -53,3 +55,37 @@ def epub_safe(path_to_epub: Path) -> bool:
         if Parser(content).contains_javascript():
             contains_js = True
     return not contains_js
+
+
+def init_argparse() -> ArgumentParser:
+    """Create argument parser for system args."""
+
+    parser: ArgumentParser = ArgumentParser(
+        usage="%(prog)s [OPTION] [FILE]...",
+        description="Check e-book files for security and privacy issues.",
+    )
+    parser.add_argument(
+        "-v", "--version", action="version", version=f"{parser.prog} version 0.1.0"
+    )
+    parser.add_argument("files", nargs="*")
+    return parser
+
+
+def main() -> None:
+    """Read system args and check e-book files."""
+    parser: ArgumentParser = init_argparse()
+    args: Namespace = parser.parse_args()
+    if not args.files:
+        print("no file input")
+    for file in args.files:
+        if file == "-":
+            continue
+        try:
+            # TODO: this isn't pretty; make this pretty and user-friendly.
+            print(f"{epub_safe(file)=}")
+        except (FileNotFoundError, IsADirectoryError) as err:
+            print(f"{sys.argv[0]}: {file}: {err.strerror}", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

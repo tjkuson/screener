@@ -19,7 +19,6 @@
 Test the screener module; for use with `pytest`.
 """
 
-
 from pathlib import Path
 
 from ..screener import epub_safe
@@ -30,6 +29,6 @@ def test_contains_javascript():
     safe_ebook_path = Path(r"screener/tests/william-shakespeare_richard-ii.epub")
     assert epub_safe(safe_ebook_path)
     unsafe_ebook_path = Path(
-        r"screener/tests/william-shakespeare_richard-ii _with-script-tags.epub"
+        r"screener/tests/william-shakespeare_richard-ii_with-script-tags.epub"
     )
     assert not epub_safe(unsafe_ebook_path)
