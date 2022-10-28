@@ -35,7 +35,7 @@ class Parser:
     def __init__(self, content: bytes) -> None:
         """Store html file."""
 
-        self.html = content
+        self.html: bytes = content
 
     def contains_javascript(self) -> bool:
         """Search for JavaScript in html files."""
