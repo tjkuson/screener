@@ -45,6 +45,18 @@ You can also run tests.
 poetry run pytest
 ```
 
+With coverage metrics:
+
+```commandline
+poetry run coverage run -m pytest
+```
+
+Type-checking:
+
+```commandline
+poetry run mypy screener/
+```
+
 This is the recommended way to install Screener for development and testing.
 
 #### Alternative installation
