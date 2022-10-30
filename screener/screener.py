@@ -85,8 +85,10 @@ def main() -> None:
         if file == "-":
             continue
         try:
-            # TODO: this isn't pretty; make this pretty and user-friendly.
-            print(f"{epub_safe(file)=}")
+            if epub_safe(file):
+                print(f"No JavaScript detected in {file}")
+            else:
+                print(f"JavaScript detected in {file}!")
         except (FileNotFoundError, IsADirectoryError) as err:
             print(f"{sys.argv[0]}: {file}: {err.strerror}", file=sys.stderr)
 
