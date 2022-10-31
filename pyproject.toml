@@ -10,6 +10,7 @@ repository = "https://github.com/tjkuson/screener/"
 python = "^3.7.2"
 EbookLib = "^0.17.1"
 beautifulsoup4 = "^4.11.1"
+mobi = "^0.3.3"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
@@ -28,7 +29,7 @@ target-version = ["py37","py38","py39", "py310"]
 profile = "black"
 
 [[tool.mypy.overrides]]
-module = ["ebooklib", "ebooklib.epub"]
+module = ["ebooklib", "ebooklib.epub", "mobi"]
 ignore_missing_imports = true
 
 [build-system]
