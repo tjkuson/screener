@@ -28,7 +28,7 @@ from ..screener import epub_safe
 TEST_DIR = dirname(abspath(__file__))
 
 
-def test_parse_azw3():
+def test_parse_azw3() -> None:
     """Test azw3 file."""
     temp_dir: Path
     epub_translation: Path
