@@ -35,8 +35,8 @@ def test_parse_azw3() -> None:
 
     safe_azw3_file: Path = Path(join(TEST_DIR, "laozi_tao-te-ching_james-legge.azw3"))
     with InterpretKindleFile(safe_azw3_file) as interpretation:
-        temp_dir: Path = Path(interpretation.temp_dir)
-        epub_translation: Path = Path(interpretation.generated_epub)
+        temp_dir = Path(interpretation.temp_dir)
+        epub_translation = Path(interpretation.generated_epub)
         assert epub_translation.exists()
         assert temp_dir.exists()
         assert epub_safe(epub_translation)
@@ -47,8 +47,8 @@ def test_parse_azw3() -> None:
         join(TEST_DIR, "laozi_tao-te-ching_james-legge_with-script-tags.azw3")
     )
     with InterpretKindleFile(unsafe_azw3_file) as interpretation:
-        temp_dir: Path = Path(interpretation.temp_dir)
-        epub_translation: Path = Path(interpretation.generated_epub)
+        temp_dir = Path(interpretation.temp_dir)
+        epub_translation = Path(interpretation.generated_epub)
         assert epub_translation.exists()
         assert temp_dir.exists()
         assert not epub_safe(epub_translation)
