@@ -7,7 +7,7 @@ authors = ["Tom Kuson <mail@tjkuson.me>"]
 repository = "https://github.com/tjkuson/screener/"
 
 [tool.poetry.dependencies]
-python = "^3.7.2"
+python = "^3.10"
 EbookLib = "^0.17.1"
 beautifulsoup4 = "^4.11.1"
 mobi = "^0.3.3"
@@ -23,7 +23,7 @@ types-beautifulsoup4 = "^4.11.6"
 
 [tool.black]
 line-length = 88
-target-version = ["py37","py38","py39", "py310"]
+target-version = ["py310"]
 
 [tool.isort]
 profile = "black"
