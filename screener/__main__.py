@@ -22,9 +22,8 @@ import sys
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
-from kindle import InterpretKindleFile
-
-from screener import epub_safe
+from .kindle import InterpretKindleFile
+from .screener import epub_safe
 
 
 def init_argparse() -> ArgumentParser:
