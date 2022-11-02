@@ -19,7 +19,6 @@ Contains methods to check an e-book file for security and privacy issues.
 """
 
 import logging
-from argparse import ArgumentParser
 from pathlib import Path
 
 from bs4 import BeautifulSoup, ResultSet
