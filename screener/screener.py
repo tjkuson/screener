@@ -14,8 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Screener
-
+"""
 Contains methods to check an e-book file for security and privacy issues.
 """
 
@@ -57,18 +56,3 @@ def epub_safe(path_to_epub: Path) -> bool:
         if Parser(content).contains_javascript():
             contains_js = True
     return not contains_js
-
-
-def init_argparse() -> ArgumentParser:
-    """Create argument parser for system args."""
-
-    parser: ArgumentParser = ArgumentParser(
-        prog="screener",
-        usage="%(prog)s [OPTION] [FILE]...",
-        description="Check e-book files for security and privacy issues.",
-    )
-    parser.add_argument(
-        "-v", "--version", action="version", version=f"{parser.prog} version 0.1.0"
-    )
-    parser.add_argument("files", nargs="*")
-    return parser

@@ -29,7 +29,7 @@ target-version = ["py37","py38","py39", "py310"]
 profile = "black"
 
 [[tool.mypy.overrides]]
-module = ["ebooklib", "ebooklib.epub", "mobi"]
+module = ["ebooklib", "ebooklib.epub", "mobi", "kindle"]
 ignore_missing_imports = true
 
 [build-system]

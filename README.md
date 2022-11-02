@@ -18,8 +18,8 @@ Screener aims to check e-book files for these issues so that you can read with p
 
 ## Features
 
-At present, Screener can only check epub files for JavaScript tags. More security and privacy checks are planned, 
-and so is wider file support. Contribute if you think you are up to the challenge!
+-   Check e-book files for JavaScript tags.
+-   Supports `.epub` and `.azw3` files.
 
 ## Get started
 
