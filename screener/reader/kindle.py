@@ -23,22 +23,25 @@ from pathlib import Path
 
 import mobi
 
+from .abstract import AbstractReader
 
-class InterpretKindleFile:
-    """Handle mobi files."""
 
-    def __init__(self, mobi_path: Path) -> None:
-        self.kindle_file_path: Path = mobi_path
-        self.temp_dir: Path
+class KindleFileReader(AbstractReader):
+    """Handle azw3 files."""
+
+    def __init__(self, file_path: Path) -> None:
+        super().__init__(file_path)
+        self._temp_dir: Path
         self.generated_epub: Path
 
     def __enter__(self):
         """The runtime context of the database class (connecting to the database)."""
+
         # The `mobi` library likes file paths as strings for whatever reason.
-        self.temp_dir, self.generated_epub = mobi.extract(str(self.kindle_file_path))
+        self._temp_dir, self.generated_epub = mobi.extract(str(self.file_path))
         # The 'with' statement binds the object to its 'as' clause (if specified).
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         """Delete temp files."""
-        shutil.rmtree(self.temp_dir)
+        shutil.rmtree(self._temp_dir)

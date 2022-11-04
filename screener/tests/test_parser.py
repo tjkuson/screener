@@ -15,20 +15,34 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-Test the screener module; for use with `pytest`.
+Test the parser module; for use with `pytest`.
 """
 
 from pathlib import Path
 
-from ..screener import epub_safe
+from screener.parser.epub import parse_epub
+from screener.parser.kindle import parse_kindle
+
+TEST_DIR = Path(__file__).parent
 
 
-def test_contains_javascript():
-    """Test that script can pick up a <script> tag in epub file."""
+def test_parse_epub():
+    """Test epub file."""
 
-    safe_ebook_path = Path(r"screener/tests/william-shakespeare_richard-ii.epub")
-    assert epub_safe(safe_ebook_path)
-    unsafe_ebook_path = Path(
-        r"screener/tests/william-shakespeare_richard-ii_with-script-tags.epub"
+    safe_epub_file = TEST_DIR / "william-shakespeare_richard-ii.epub"
+    assert parse_epub(safe_epub_file)
+
+    unsafe_epub_file = TEST_DIR / "william-shakespeare_richard-ii_with-script-tags.epub"
+    assert not parse_epub(unsafe_epub_file)
+
+
+def test_parse_kindle():
+    """Test kindle file."""
+
+    safe_kindle_file = TEST_DIR / "laozi_tao-te-ching_james-legge.azw3"
+    assert parse_kindle(safe_kindle_file)
+
+    unsafe_kindle_file = (
+        TEST_DIR / "laozi_tao-te-ching_james-legge_with-script-tags.azw3"
     )
-    assert not epub_safe(unsafe_ebook_path)
+    assert not parse_kindle(unsafe_kindle_file)

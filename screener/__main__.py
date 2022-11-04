@@ -22,8 +22,10 @@ import sys
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
-from .kindle import InterpretKindleFile
-from .screener import epub_safe
+from screener.parser.epub import parse_epub
+from screener.parser.kindle import parse_kindle
+from screener.reader.epub import EpubFileReader
+from screener.reader.kindle import KindleFileReader
 
 
 def init_argparse() -> ArgumentParser:
@@ -56,11 +58,11 @@ def main() -> None:
             is_safe: bool = True
             match extension:
                 case ".epub":
-                    is_safe = epub_safe(file)
+                    with EpubFileReader(file) as epub:
+                        is_safe = parse_epub(epub.file_path)
                 case ".azw3":
-                    with InterpretKindleFile(file) as interpretation:
-                        epub_translation: Path = Path(interpretation.generated_epub)
-                        is_safe = epub_safe(epub_translation)
+                    with KindleFileReader(file) as azw3:
+                        is_safe = parse_kindle(azw3.file_path)
             if is_safe:
                 print(f"No JavaScript detected in {file}")
             else:
