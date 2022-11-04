@@ -19,5 +19,5 @@ def test_html_contains_javascript() -> None:
 
     html_with_script_tags = TEST_DIR / "script_tags.html"
     with open(html_with_script_tags, "rb") as file:
-        content: bytes = file.read()
+        content = file.read()
         assert html_contains_javascript(content)
