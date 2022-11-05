@@ -60,7 +60,7 @@ def main() -> None:
                 case ".epub":
                     with EpubFileReader(file) as epub:
                         is_safe = parse_epub(epub.file_path)
-                case ".azw3":
+                case ".azw3", ".mobi":
                     with KindleFileReader(file) as azw3:
                         is_safe = parse_kindle(azw3.file_path)
             if is_safe:

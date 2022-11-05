@@ -32,13 +32,13 @@ class KindleFileReader(AbstractReader):
     def __init__(self, file_path: Path) -> None:
         super().__init__(file_path)
         self._temp_dir: Path
-        self.generated_epub: Path
+        self.generated_translation: Path
 
     def __enter__(self):
         """The runtime context of the database class (connecting to the database)."""
 
         # The `mobi` library likes file paths as strings for whatever reason.
-        self._temp_dir, self.generated_epub = mobi.extract(str(self.file_path))
+        self._temp_dir, self.generated_translation = mobi.extract(str(self.file_path))
         # The 'with' statement binds the object to its 'as' clause (if specified).
         return self
 

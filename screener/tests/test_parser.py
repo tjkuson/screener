@@ -36,8 +36,8 @@ def test_parse_epub():
     assert not parse_epub(unsafe_epub_file)
 
 
-def test_parse_kindle():
-    """Test kindle file."""
+def test_parse_azw3():
+    """Test azw3 file."""
 
     safe_kindle_file = TEST_DIR / "laozi_tao-te-ching_james-legge.azw3"
     assert parse_kindle(safe_kindle_file)
@@ -46,3 +46,12 @@ def test_parse_kindle():
         TEST_DIR / "laozi_tao-te-ching_james-legge_with-script-tags.azw3"
     )
     assert not parse_kindle(unsafe_kindle_file)
+
+
+def test_parse_mobi():
+    """Test mobi file."""
+
+    # mobi files don't support JavaScript, so they are always safe (wrt script tags)
+
+    safe_kindle_file: Path = TEST_DIR / "edith-wharton_ethan-frome.mobi"
+    assert parse_kindle(safe_kindle_file)
