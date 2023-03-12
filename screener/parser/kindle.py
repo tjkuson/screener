@@ -1,14 +1,14 @@
+"""Parse kindle files."""
+
 from pathlib import Path
 
 from screener.reader.kindle import KindleFileReader
-from screener.utils import html_contains_javascript
 
 from .epub import parse_epub
 
 
 def parse_kindle(path_to_kindle: Path) -> bool:
     """Parse kindle to check that it is safe."""
-
     with KindleFileReader(path_to_kindle) as kindle:
         extension: str = Path(kindle.generated_translation).suffix
         match extension:

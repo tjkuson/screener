@@ -1,6 +1,4 @@
-"""
-Test utils module; for use with `pytest`.
-"""
+"""Test utils module; for use with `pytest`."""
 
 from pathlib import Path
 
@@ -11,7 +9,6 @@ TEST_DIR = Path(__file__).parent
 
 def test_html_contains_javascript() -> None:
     """Test html_contains_javascript function."""
-
     safe_html = TEST_DIR / "safe.html"
     with open(safe_html, "rb") as file:
         content: bytes = file.read()

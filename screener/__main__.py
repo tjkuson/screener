@@ -14,23 +14,18 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-"""
-Screener entry-point script.
-"""
+"""Screener entry-point script."""
 
 import sys
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
-from screener.parser.epub import parse_epub
-from screener.parser.kindle import parse_kindle
-from screener.reader.epub import EpubFileReader
-from screener.reader.kindle import KindleFileReader
+from screener.parser import parse_epub, parse_kindle
+from screener.reader import EpubFileReader, KindleFileReader
 
 
 def init_argparse() -> ArgumentParser:
     """Create argument parser for system args."""
-
     parser: ArgumentParser = ArgumentParser(
         prog="screener",
         usage="%(prog)s [OPTION] [FILE]...",
@@ -45,7 +40,6 @@ def init_argparse() -> ArgumentParser:
 
 def main() -> None:
     """Read system args and check e-book files."""
-
     parser: ArgumentParser = init_argparse()
     args: Namespace = parser.parse_args()
     if not args.files:
