@@ -1,5 +1,7 @@
 """Test utils module; for use with `pytest`."""
 
+from __future__ import annotations
+
 from pathlib import Path
 
 from screener.utils import (
@@ -7,30 +9,38 @@ from screener.utils import (
     html_contains_javascript,
 )
 
-TEST_DIR = Path(__file__).parent
 
+class TestUtilFunctions:
+    """Test utility functions."""
 
-def test_html_contains_javascript() -> None:
-    """Test html_contains_javascript function."""
-    safe_html = TEST_DIR / "safe.html"
-    with open(safe_html, "rb") as file:
-        content: bytes = file.read()
-        assert not html_contains_javascript(content)
+    test_dir = Path(__file__).parent
 
-    html_with_script_tags = TEST_DIR / "script_tags.html"
-    with open(html_with_script_tags, "rb") as file:
-        content = file.read()
-        assert html_contains_javascript(content)
+    def test_html_contains_javascript(self: TestUtilFunctions) -> None:
+        """Test html_contains_javascript function."""
+        # Check function returns False when there are no script tags
+        safe_html = self.test_dir / "safe.html"
+        with open(safe_html, "rb") as file:
+            content: bytes = file.read()
+            assert not html_contains_javascript(content)
 
+        # Check function returns True when there are script tags
+        html_with_script_tags = self.test_dir / "script_tags.html"
+        with open(html_with_script_tags, "rb") as file:
+            content = file.read()
+            assert html_contains_javascript(content)
 
-def test_html_contains_images_with_external_sources() -> None:
-    """Test html_contains_images_with_external_sources function."""
-    safe_html = TEST_DIR / "safe_image.html"
-    with open(safe_html, "rb") as file:
-        content: bytes = file.read()
-        assert not html_contains_images_with_external_sources(content)
+    def test_html_contains_images_with_external_sources(
+        self: TestUtilFunctions,
+    ) -> None:
+        """Test html_contains_images_with_external_sources function."""
+        # Check function returns False when there are external images
+        safe_html = self.test_dir / "safe_image.html"
+        with open(safe_html, "rb") as file:
+            content = file.read()
+            assert not html_contains_images_with_external_sources(content)
 
-    html_with_external_image = TEST_DIR / "unsafe_image.html"
-    with open(html_with_external_image, "rb") as file:
-        content = file.read()
-        assert html_contains_images_with_external_sources(content)
+        # Check function returns True when there are external images
+        html_with_external_image = self.test_dir / "unsafe_image.html"
+        with open(html_with_external_image, "rb") as file:
+            content = file.read()
+            assert html_contains_images_with_external_sources(content)

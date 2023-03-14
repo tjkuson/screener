@@ -16,6 +16,6 @@ def html_contains_javascript(content: bytes) -> bool:
 
 def html_contains_images_with_external_sources(content: bytes) -> bool:
     """Search for images with external sources in html files."""
-    soup: BeautifulSoup = BeautifulSoup(content, "html.parser")
+    soup = BeautifulSoup(content, "html.parser")
     images = soup.find_all("img")
     return any(image for image in images if image["src"].startswith("http"))

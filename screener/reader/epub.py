@@ -21,5 +21,5 @@ class EpubFileReader(AbstractReader):
 
     def __enter__(self: EpubFileReader) -> EpubFileReader:
         """Runtime context."""
-        self.book: epub.EpubBook = epub.read_epub(self.file_path)
+        self.book = epub.read_epub(self.file_path)
         return self

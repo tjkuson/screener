@@ -5,7 +5,10 @@ from pathlib import Path
 from ebooklib import ITEM_DOCUMENT
 
 from screener.reader import EpubFileReader
-from screener.utils import html_contains_javascript, html_contains_images_with_external_sources
+from screener.utils import (
+    html_contains_images_with_external_sources,
+    html_contains_javascript,
+)
 
 
 def parse_epub(path_to_epub: Path) -> bool:
