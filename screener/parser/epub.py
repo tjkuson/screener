@@ -11,12 +11,10 @@ from screener.utils import html_contains_javascript, html_contains_images_with_e
 def parse_epub(path_to_epub: Path) -> bool:
     """Parse epub to check that it is safe."""
     with EpubFileReader(path_to_epub) as epub:
-
         for item in epub.book.get_items_of_type(ITEM_DOCUMENT):
-            content: bytes = item.get_content()
+            content = item.get_content()
             if html_contains_javascript(content):
-                return True
+                return False
             if html_contains_images_with_external_sources(content):
-                return True
-
-    return False
+                return False
+        return True
