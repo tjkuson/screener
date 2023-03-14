@@ -1,35 +1,32 @@
 # Screener
+
 [![Codacy](https://img.shields.io/codacy/grade/d21e502c643442ff88b493ad11470c4d)](https://app.codacy.com/gh/tjkuson/screener/dashboard?branch=main)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Check e-book files for security and privacy issues.
 
-*Screener is currently in early development. Please consider contributing if you have the time and know-how!*
+_Screener is currently in early development. Please consider contributing if you have the time and know-how!_
 
 ## Motivation
 
-E-books are great, but the common file formats have security and privacy issues. Most use web browser technologies like 
-HTML, CSS, and JavaScript. Therefore, e-books are vulnerable to security and privacy issues that already exist on the 
-web.
+E-books are great, but the common file formats have security and privacy issues. Most use web browser technologies like HTML, CSS, and JavaScript. Therefore, e-books are vulnerable to security and privacy issues that already exist on the web.
 
 Screener aims to check e-book files for these issues so that you can read with peace of mind!
 
 ## Features
 
--   Check e-book files for JavaScript tags.
--   Supports `.epub` and `.azw3` files.
+- Check e-book files for JavaScript tags.
+- Check e-book files for images with external sources to prevent tracking.
+- Supports `.epub`, `.mobi`, and `.azw3` files.
 
 ## Get started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing
-purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-Screener requires [Python](https://www.python.org/about/gettingstarted/) (version 3.10 is recommended), 
-[pip](https://pip.pypa.io/en/stable/getting-started/), and [Poetry](https://python-poetry.org/docs/#installation) to 
-be installed.
+Screener requires [Python](https://www.python.org/about/gettingstarted/) (version 3.10 is recommended), [pip](https://pip.pypa.io/en/stable/getting-started/), and [Poetry](https://python-poetry.org/docs/#installation) to be installed.
 
 ### Installing
 
@@ -61,8 +58,7 @@ This is the recommended way to install Screener for development and testing.
 
 #### Alternative installation
 
-If you would rather not use `poetry run`, you can use `poetry export` to create a `requirements.txt` file and install 
-the packages directly using `pip`.
+If you would rather not use `poetry run`, you can use `poetry export` to create a `requirements.txt` file and install the packages directly using `pip`.
 
 ```commandline
 poetry export -f requirements.txt --output requirements.txt
@@ -75,8 +71,7 @@ You can then use Python as normal.
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-At present, this project is in early development and needs extra security and privacy checks and wider file format 
-support more than anything else.
+At present, this project is in early development and needs extra security and privacy checks and wider file format support more than anything else.
 
 Please make sure to update tests as appropriate.
 

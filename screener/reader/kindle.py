@@ -20,14 +20,16 @@ class KindleFileReader(AbstractReader):
     def __init__(self: KindleFileReader, file_path: Path) -> None:
         """Initialize the class."""
         super().__init__(file_path)
-        self._temp_dir: Path
-        self.generated_translation: Path
+        self._temp_dir = None
+        self.generated_translation = None
 
     def __enter__(self: KindleFileReader) -> KindleFileReader:
         """Runtime context."""
         # The `mobi` library likes file paths as strings for whatever reason.
         self._temp_dir, self.generated_translation = extract(str(self.file_path))
-        # The 'with' statement binds the object to its 'as' clause (if specified).
+        if self.generated_translation is None or self._temp_dir is None:
+            msg = "Could not extract Kindle file"
+            raise ValueError(msg)
         return self
 
     def __exit__(
@@ -37,4 +39,5 @@ class KindleFileReader(AbstractReader):
         exc_tb: TracebackType | None,
     ) -> None:
         """Delete temp files."""
-        shutil.rmtree(self._temp_dir)
+        if self._temp_dir is not None:
+            shutil.rmtree(self._temp_dir)
