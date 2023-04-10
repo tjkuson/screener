@@ -530,14 +530,14 @@ files = [
 
 [[package]]
 name = "types-beautifulsoup4"
-version = "4.12.0.1"
+version = "4.12.0.3"
 description = "Typing stubs for beautifulsoup4"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-beautifulsoup4-4.12.0.1.tar.gz", hash = "sha256:57bcd40e84c8d292c0a1de5267751a3a399ae49a3d826d9a999bc72fe94dcae3"},
-    {file = "types_beautifulsoup4-4.12.0.1-py3-none-any.whl", hash = "sha256:8eaae29a605e5bb46a34160587f61a2a0af9ecfcefbaac983dd67b96ace1ed85"},
+    {file = "types-beautifulsoup4-4.12.0.3.tar.gz", hash = "sha256:64b71d44d6a6030e39bb324dd51ef176bec158cd4d2994ed7213c1b2b8fa0785"},
+    {file = "types_beautifulsoup4-4.12.0.3-py3-none-any.whl", hash = "sha256:019e1a9096ecd12a37981d562cfed405398e6ed3c7717852c1f01871d052906a"},
 ]
 
 [package.dependencies]
