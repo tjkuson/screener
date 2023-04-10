@@ -9,7 +9,7 @@ repository = "https://github.com/tjkuson/screener/"
 [tool.poetry.dependencies]
 python = "^3.10"
 EbookLib = "^0.18"
-beautifulsoup4 = "^4.12.0"
+beautifulsoup4 = "^4.12.2"
 mobi = "^0.3.3"
 
 [tool.poetry.group.dev.dependencies]
