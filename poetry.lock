@@ -517,6 +517,20 @@ files = [
 ]
 
 [[package]]
+name = "ssort"
+version = "0.11.6"
+description = "The python statement sorter"
+category = "dev"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "ssort-0.11.6.tar.gz", hash = "sha256:21fec493487f32dff50d30efa5b6aad18286e9817600b64bfe686ae062bae7ae"},
+]
+
+[package.dependencies]
+pathspec = ">=0.9.0"
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -585,4 +599,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "22891140b629e860bd6da1085b61f547af21a1eb7e6d9fde47504f5095f41013"
+content-hash = "09c003520b1ad865021375fc248ce2db225b6117cb1b843b78f5fc7ccf9dc932"
