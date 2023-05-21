@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 
 echo "Checking with ssort..."
-ssort --check .
+python3 -m ssort --check .
 
 echo "Running ruff violation checks..."
-ruff check --quiet .
+python3 -m ruff check --quiet .
 
 echo "Checking with black..."
-black --check .
+python3 -m black --check .
 
 echo "Checking with mypy..."
-mypy --strict .
+python3 -m mypy --strict .

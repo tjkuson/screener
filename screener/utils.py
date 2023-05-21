@@ -18,4 +18,4 @@ def html_contains_images_with_external_sources(content: bytes) -> bool:
     """Search for images with external sources in html files."""
     soup = BeautifulSoup(content, "html.parser")
     images = soup.find_all("img")
-    return any(image for image in images if image["src"].startswith("http"))
+    return any(i for i in images if i["src"].startswith("http"))

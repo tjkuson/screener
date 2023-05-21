@@ -1,9 +1,5 @@
 # Screener
 
-[![Codacy](https://img.shields.io/codacy/grade/d21e502c643442ff88b493ad11470c4d)](https://app.codacy.com/gh/tjkuson/screener/dashboard?branch=main)
-[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
 Check e-book files for security and privacy issues.
 
 _Screener is currently in early development. Please consider contributing if you have the time and know-how!_
