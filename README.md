@@ -29,7 +29,7 @@ Screener requires [Python](https://www.python.org/about/gettingstarted/) (versio
 Copy the files in this repository and navigate to the repository directory. You can run the project with `poetry run`.
 
 ```commandline
-poetry run python screener/screener.py
+poetry run python -m screener
 ```
 
 You can also run tests.
