@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
+import warnings
 if TYPE_CHECKING:
     from pathlib import Path
 
@@ -21,5 +21,10 @@ class EpubFileReader(AbstractReader):
 
     def __enter__(self: EpubFileReader) -> EpubFileReader:
         """Runtime context."""
-        self.book = epub.read_epub(self.file_path)
+        print("Reading epub file")
+        with warnings.catch_warnings():
+            # Have to do this because of bug in ebooklib
+            warnings.simplefilter("ignore")
+            self.book = epub.read_epub(self.file_path, options={"ignore_ncx": False})
+        print("Finished reading epub file")
         return self

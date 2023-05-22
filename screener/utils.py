@@ -8,10 +8,10 @@ from bs4 import BeautifulSoup
 def html_contains_javascript(content: bytes) -> bool:
     """Search for JavaScript in html files."""
     soup = BeautifulSoup(content, "html.parser")
-    scripts = soup.find_all("script")
-    if scripts:
+    if scripts := soup.find_all("script"):
         logging.info("scripts detected: %s", scripts)
-    return bool(scripts)
+        return True
+    return False
 
 
 def html_contains_images_with_external_sources(content: bytes) -> bool:
