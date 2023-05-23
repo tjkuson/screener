@@ -1,10 +1,14 @@
 [tool.poetry]
 name = "Screener"
-version = "0.2.1"
+version = "0.2.2"
 description = "Check e-book files for security and privacy issues."
 license = "LGPL-3.0-only"
 authors = ["Tom Kuson <mail@tjkuson.me>"]
 repository = "https://github.com/tjkuson/screener/"
+readme = "README.md"
+packages = [
+    { include = "screener", from = "." },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -69,7 +73,7 @@ line-length = 88
 target-version = "py310"
 
 [tool.ruff.per-file-ignores]
-"screener/tests/*" = ["S101"]
+"tests/*" = ["S101"]
 
 [tool.ruff.flake8-type-checking]
 strict = true
