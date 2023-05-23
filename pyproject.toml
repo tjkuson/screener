@@ -3,7 +3,7 @@ name = "Screener"
 version = "0.2.3"
 description = "Check e-book files for security and privacy issues."
 authors = ["Tom Kuson <mail@tjkuson.me>"]
-license = "GPL-3.0-only"
+license = "LGPL-3.0-only"
 readme = "README.md"
 packages = [
     { include = "screener", from = "." },
