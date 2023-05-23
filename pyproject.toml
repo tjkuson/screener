@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Screener"
-version = "0.2.2"
+version = "0.2.3"
 description = "Check e-book files for security and privacy issues."
 authors = ["Tom Kuson <mail@tjkuson.me>"]
 license = "GPL-3.0-only"
