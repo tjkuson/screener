@@ -1,7 +1,7 @@
 """Contains methods to check a Kindle e-book file for security and privacy issues."""
 
 from __future__ import annotations
-
+import warnings
 import shutil
 from typing import TYPE_CHECKING
 
