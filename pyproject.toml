@@ -2,12 +2,17 @@
 name = "Screener"
 version = "0.2.2"
 description = "Check e-book files for security and privacy issues."
-license = "LGPL-3.0-only"
 authors = ["Tom Kuson <mail@tjkuson.me>"]
-repository = "https://github.com/tjkuson/screener/"
+license = "GPL-3.0-only"
 readme = "README.md"
 packages = [
     { include = "screener", from = "." },
+]
+repository = "https://github.com/tjkuson/screener/"
+keywords = ["ebook", "security", "privacy", "epub", "mobi", "kindle"]
+classifiers = [
+    "Topic :: Security",
+    "Topic :: Utilities",
 ]
 
 [tool.poetry.dependencies]

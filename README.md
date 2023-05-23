@@ -22,46 +22,23 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Screener requires [Python](https://www.python.org/about/gettingstarted/) (version 3.10 is recommended), [pip](https://pip.pypa.io/en/stable/getting-started/), and [Poetry](https://python-poetry.org/docs/#installation) to be installed.
+Screener requires [Python](https://www.python.org/about/gettingstarted/) (version 3.10 or newer).
 
 ### Installing
 
-Copy the files in this repository and navigate to the repository directory. You can run the project with `poetry run`.
+Screen is available on [PyPI](https://pypi.org/project/screener/). To install, run:
 
-```commandline
-poetry run python -m screener
+```bash
+pip install screener
 ```
 
-You can also run tests.
+#### Development installation
 
-```commandline
-poetry run pytest
+To install Screener for development, clone the repository and run:
+
+```bash
+poetry install
 ```
-
-With coverage metrics:
-
-```commandline
-poetry run coverage run -m pytest
-```
-
-Type-checking:
-
-```commandline
-poetry run mypy screener/
-```
-
-This is the recommended way to install Screener for development and testing.
-
-#### Alternative installation
-
-If you would rather not use `poetry run`, you can use `poetry export` to create a `requirements.txt` file and install the packages directly using `pip`.
-
-```commandline
-poetry export -f requirements.txt --output requirements.txt
-pip install -r requirements.txt
-```
-
-You can then use Python as normal.
 
 ## Contributing
 
