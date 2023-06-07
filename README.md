@@ -34,7 +34,7 @@ pip install screener
 
 #### Development installation
 
-To install Screener for development, clone the repository and run:
+To install Screener for development, ensure you have [Poetry](https://python-poetry.org/) clone the repository and run:
 
 ```bash
 poetry install
