@@ -24,7 +24,7 @@ def init_argparse() -> ArgumentParser:
         "-v",
         "--version",
         action="version",
-        version=f"{parser.prog} version 0.3.0",
+        version=f"{parser.prog} version 0.3.1",
     )
     parser.add_argument("files", nargs="*")
     return parser
@@ -69,6 +69,7 @@ def main() -> None:
                 print(f"{file_path}: could not be parsed ({msg})", file=sys.stderr)
             case None:
                 print(f"{file}: safe", file=sys.stderr)
+    sys.exit()
 
 
 if __name__ == "__main__":
