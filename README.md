@@ -2,8 +2,6 @@
 
 Check e-book files for security and privacy issues.
 
-_Screener is currently in early development. Please consider contributing if you have the time and know-how!_
-
 ## Motivation
 
 E-books are great, but the common file formats have security and privacy issues. Most use web browser technologies like HTML, CSS, and JavaScript. Therefore, e-books are vulnerable to security and privacy issues that already exist on the web.
@@ -26,7 +24,7 @@ Screener requires [Python](https://www.python.org/about/gettingstarted/) (versio
 
 ### Installing
 
-Screen is available on [PyPI](https://pypi.org/project/screener/). To install, run:
+Screener is available on [PyPI](https://pypi.org/project/screener/). To install, run:
 
 ```bash
 pip install screener

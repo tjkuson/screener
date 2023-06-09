@@ -1,21 +1,30 @@
 """Screener utility functions."""
 
-import logging
 
 from bs4 import BeautifulSoup
 
+from screener.checker import Checker
+from screener.diagnostic import ExternalImageDiagnostic, JavaScriptDiagnostic
 
-def html_contains_javascript(content: bytes) -> bool:
-    """Search for JavaScript in html files."""
+
+def html_contains_javascript(
+    checker: Checker, content: bytes
+) -> list[JavaScriptDiagnostic] | None:
+    """Check if HTML contains JavaScript."""
     soup = BeautifulSoup(content, "html.parser")
     if scripts := soup.find_all("script"):
-        logging.info("scripts detected: %s", scripts)
-        return True
-    return False
+        return [JavaScriptDiagnostic(checker.file_path.name) for _ in scripts]
+    return None
 
 
-def html_contains_images_with_external_sources(content: bytes) -> bool:
-    """Search for images with external sources in html files."""
+def html_contains_images_with_external_sources(
+    checker: Checker, content: bytes
+) -> list[ExternalImageDiagnostic] | None:
+    """Check if HTML contains images with external sources."""
     soup = BeautifulSoup(content, "html.parser")
     images = soup.find_all("img")
-    return any(i for i in images if i["src"].startswith("http"))
+    if external_images := tuple(i for i in images if i["src"].startswith("http")):
+        return [
+            ExternalImageDiagnostic(checker.file_path.name) for _ in external_images
+        ]
+    return None
