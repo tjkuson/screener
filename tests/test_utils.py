@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from pathlib import Path
-from screener.checker import Checker
 
+from screener.checker import Checker
 from screener.utils import (
     html_contains_images_with_external_sources,
     html_contains_javascript,

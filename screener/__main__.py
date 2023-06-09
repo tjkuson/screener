@@ -5,11 +5,6 @@ from argparse import ArgumentParser
 from pathlib import Path
 
 from screener.checker import Checker
-from screener.diagnostic import (
-    ExternalImageDiagnostic,
-    JavaScriptDiagnostic,
-    ParseErrorDiagnostic,
-)
 from screener.parser import parse_epub, parse_kindle
 from screener.reader import EpubFileReader, KindleFileReader
 
@@ -41,11 +36,12 @@ def check_file(
         case ".epub":
             with EpubFileReader(file) as epub:
                 parse_epub(checker, epub.file_path)
-        case ".azw3", ".mobi":
+        case ".azw3" | ".mobi":
             with KindleFileReader(file) as azw3:
                 parse_kindle(checker, azw3.file_path)
         case _:
-            raise ValueError(f"unsupported file extension: {extension}")
+            msg = f"unsupported file extension: {extension}"
+            raise ValueError(msg)
     return checker
 
 

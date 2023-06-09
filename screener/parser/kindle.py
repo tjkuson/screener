@@ -2,15 +2,10 @@
 
 from pathlib import Path
 
-from screener.diagnostic import (
-    ExternalImageDiagnostic,
-    JavaScriptDiagnostic,
-    ParseErrorDiagnostic,
-)
+from screener.checker import Checker
 from screener.reader.kindle import KindleFileReader
 
 from .epub import parse_epub
-from ..checker import Checker
 
 
 def parse_kindle(
@@ -23,11 +18,11 @@ def parse_kindle(
         raise ValueError(msg)
     with KindleFileReader(path_to_kindle) as kindle:
         if kindle.generated_translation is None:
-            return ParseErrorDiagnostic(
-                path_to_kindle.name, "failed to generate translation"
-            )
+            msg = "generated_translation cannot be None"
+            raise FileNotFoundError(msg)
         extension = Path(kindle.generated_translation).suffix
         match extension:
             case ".epub":
                 epub_translation = Path(kindle.generated_translation)
                 parse_epub(checker, epub_translation)
+                return

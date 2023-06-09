@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from screener.checker import Checker
 from screener.diagnostic import (
     JavaScriptDiagnostic,
 )
 from screener.parser import parse_epub, parse_kindle
-from screener.checker import Checker
 
 
 class TestParser:

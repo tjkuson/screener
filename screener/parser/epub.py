@@ -5,7 +5,6 @@ from pathlib import Path
 from ebooklib import ITEM_DOCUMENT
 
 from screener.checker import Checker
-from screener.diagnostic import ExternalImageDiagnostic, JavaScriptDiagnostic
 from screener.reader import EpubFileReader
 from screener.utils import (
     html_contains_images_with_external_sources,
@@ -24,9 +23,9 @@ def parse_epub(
     with EpubFileReader(path_to_epub) as epub:
         for item in epub.book.get_items_of_type(ITEM_DOCUMENT):
             content = item.get_content()
-            if diagnostics := html_contains_javascript(checker, content):
-                checker.diagnostics.extend(diagnostics)
-            if diagnostics := html_contains_images_with_external_sources(
+            if js := html_contains_javascript(checker, content):
+                checker.diagnostics.extend(js)
+            if external_images := html_contains_images_with_external_sources(
                 checker, content
             ):
-                checker.diagnostics.extend(diagnostics)
+                checker.diagnostics.extend(external_images)

@@ -1,3 +1,4 @@
+"""Checker class for checking the data."""
 from dataclasses import dataclass, field
 from pathlib import Path
 
