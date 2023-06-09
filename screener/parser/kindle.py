@@ -10,11 +10,13 @@ from screener.diagnostic import (
 from screener.reader.kindle import KindleFileReader
 
 from .epub import parse_epub
+from ..checker import Checker
 
 
 def parse_kindle(
+    checker: Checker,
     path_to_kindle: Path | None,
-) -> JavaScriptDiagnostic | ExternalImageDiagnostic | ParseErrorDiagnostic | None:
+) -> None:
     """Parse kindle to check that it is safe."""
     if path_to_kindle is None:
         msg = "path_to_kindle cannot be None"
@@ -28,10 +30,4 @@ def parse_kindle(
         match extension:
             case ".epub":
                 epub_translation = Path(kindle.generated_translation)
-                if (diagnostic := parse_epub(epub_translation)) is not None:
-                    diagnostic.file_name = path_to_kindle.name
-                    return diagnostic
-                return None
-
-        # If failed to parse, assume it is unsafe.
-        return ParseErrorDiagnostic(path_to_kindle.name, "could not process file")
+                parse_epub(checker, epub_translation)

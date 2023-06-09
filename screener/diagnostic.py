@@ -13,10 +13,16 @@ class Diagnostic:
 class JavaScriptDiagnostic(Diagnostic):
     """Diagnostic information about a file with JavaScript."""
 
+    def __str__(self) -> str:
+        return f"JavaScript found in {self.file_name}"
+
 
 @dataclass
 class ExternalImageDiagnostic(Diagnostic):
     """Diagnostic information about a file with external images."""
+
+    def __str__(self) -> str:
+        return f"External images found in {self.file_name}"
 
 
 @dataclass

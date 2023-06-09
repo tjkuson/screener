@@ -4,6 +4,7 @@ from pathlib import Path
 
 from ebooklib import ITEM_DOCUMENT
 
+from screener.checker import Checker
 from screener.diagnostic import ExternalImageDiagnostic, JavaScriptDiagnostic
 from screener.reader import EpubFileReader
 from screener.utils import (
@@ -13,14 +14,19 @@ from screener.utils import (
 
 
 def parse_epub(
+    checker: Checker,
     path_to_epub: Path,
-) -> JavaScriptDiagnostic | ExternalImageDiagnostic | None:
-    """Parse epub to check that it is safe."""
+) -> None:
+    """Parse epub to check that it is safe.
+
+    Mutates the checker object to add diagnostics.
+    """
     with EpubFileReader(path_to_epub) as epub:
         for item in epub.book.get_items_of_type(ITEM_DOCUMENT):
             content = item.get_content()
-            if html_contains_javascript(content):
-                return JavaScriptDiagnostic(path_to_epub.name)
-            if html_contains_images_with_external_sources(content):
-                return ExternalImageDiagnostic(path_to_epub.name)
-        return None
+            if diagnostics := html_contains_javascript(checker, content):
+                checker.diagnostics.extend(diagnostics)
+            if diagnostics := html_contains_images_with_external_sources(
+                checker, content
+            ):
+                checker.diagnostics.extend(diagnostics)

@@ -4,6 +4,7 @@ import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
+from screener.checker import Checker
 from screener.diagnostic import (
     ExternalImageDiagnostic,
     JavaScriptDiagnostic,
@@ -32,21 +33,20 @@ def init_argparse() -> ArgumentParser:
 
 def check_file(
     file: Path,
-) -> JavaScriptDiagnostic | ExternalImageDiagnostic | ParseErrorDiagnostic | None:
+) -> Checker:
     """Check file."""
-    try:
-        extension = file.suffix
-        match extension:
-            case ".epub":
-                with EpubFileReader(file) as epub:
-                    return parse_epub(epub.file_path)
-            case ".azw3", ".mobi":
-                with KindleFileReader(file) as azw3:
-                    return parse_kindle(azw3.file_path)
-        return ParseErrorDiagnostic(file.name, f"unknown file extension: {extension}")
-    except (FileNotFoundError, IsADirectoryError) as exc:
-        print(f"{sys.argv[0]}: {file}: {exc.strerror}", file=sys.stderr)
-        return ParseErrorDiagnostic(file.name, exc.strerror)
+    extension = file.suffix
+    checker = Checker(file)
+    match extension:
+        case ".epub":
+            with EpubFileReader(file) as epub:
+                parse_epub(checker, epub.file_path)
+        case ".azw3", ".mobi":
+            with KindleFileReader(file) as azw3:
+                parse_kindle(checker, azw3.file_path)
+        case _:
+            raise ValueError(f"unsupported file extension: {extension}")
+    return checker
 
 
 def main() -> None:
@@ -59,16 +59,13 @@ def main() -> None:
         if file == "-":
             print("stdin not supported", file=sys.stderr)
             continue
-        diagnostic = check_file(Path(file))
-        match diagnostic:
-            case JavaScriptDiagnostic(file_path):
-                print(f"{file_path}: contains JavaScript", file=sys.stderr)
-            case ExternalImageDiagnostic(file_path):
-                print(f"{file_path}: contains external images", file=sys.stderr)
-            case ParseErrorDiagnostic(file_path, msg):
-                print(f"{file_path}: could not be parsed ({msg})", file=sys.stderr)
-            case None:
-                print(f"{file}: safe", file=sys.stderr)
+        checker = check_file(Path(file))
+        if checker.diagnostics:
+            for diagnostic in checker.diagnostics:
+                print(diagnostic)
+            sys.exit(1)
+        print(f"{checker.file_path.name} is safe")
+
     sys.exit()
 
 
