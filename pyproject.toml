@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Screener"
-version = "0.4.0"
+version = "0.4.1"
 description = "Check e-book files for security and privacy issues."
 authors = ["Tom Kuson <mail@tjkuson.me>"]
 license = "LGPL-3.0-only"
@@ -27,7 +27,7 @@ pytest = "^7.3.1"
 coverage = "^7.2.5"
 mypy = "^1.2.0"
 types-beautifulsoup4 = "^4.12.0.5"
-ruff = "^0.0.271"
+ruff = "^0.0.272"
 ssort = "^0.11.6"
 
 [tool.black]
@@ -82,6 +82,9 @@ target-version = "py310"
 
 [tool.ruff.flake8-type-checking]
 strict = true
+
+[tool.mypy]
+exclude = ["dist"]
 
 [[tool.mypy.overrides]]
 module = ["ebooklib", "ebooklib.epub", "mobi", "kindle"]

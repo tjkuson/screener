@@ -45,13 +45,6 @@ coverage.xml
 .pytest_cache/
 cover/
 
-# Scrapy stuff:
-.scrapy
-
-# PyBuilder
-.pybuilder/
-target/
-
 # IPython
 profile_default/
 ipython_config.py
