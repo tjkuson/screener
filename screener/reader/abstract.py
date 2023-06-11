@@ -27,4 +27,3 @@ class AbstractReader:
         exc_tb: TracebackType | None,
     ) -> None:
         """Run on exit of runtime context."""
-        ...
