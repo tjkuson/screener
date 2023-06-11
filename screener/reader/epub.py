@@ -23,7 +23,7 @@ class EpubFileReader(AbstractReader):
     def __enter__(self: EpubFileReader) -> EpubFileReader:
         """Runtime context."""
         with warnings.catch_warnings():
-            # Have to do this because of bug in ebooklib
+            # Have to do this because of bug in ebooklib.
             warnings.simplefilter("ignore")
             self.book = epub.read_epub(self.file_path, options={"ignore_ncx": False})
         return self

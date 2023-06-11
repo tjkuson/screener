@@ -30,9 +30,8 @@ def check_file(
     file: Path,
 ) -> Checker:
     """Check file."""
-    extension = file.suffix
     checker = Checker(file)
-    match extension:
+    match extension := file.suffix:
         case ".epub":
             with EpubFileReader(file) as epub:
                 parse_epub(checker, epub.file_path)
@@ -51,18 +50,20 @@ def main() -> None:
     args = parser.parse_args()
     if not args.files:
         print("No files specified. Run with -h for help.", file=sys.stderr)
+    exit_code = 0
     for file in args.files:
         if file == "-":
             print("stdin not supported", file=sys.stderr)
             continue
         checker = check_file(Path(file))
         if checker.diagnostics:
+            exit_code = 1
             for diagnostic in checker.diagnostics:
                 print(diagnostic)
-            sys.exit(1)
-        print(f"{checker.file_path.name} is safe")
+        else:
+            print(f"{checker.file_path.name} is safe")
 
-    sys.exit()
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":
