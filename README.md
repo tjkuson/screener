@@ -1,5 +1,8 @@
 # Screener
 
+[![image](https://img.shields.io/pypi/v/screener.svg)](https://pypi.python.org/pypi/screener)
+[![image](https://img.shields.io/pypi/pyversions/screener.svg)](https://pypi.python.org/pypi/screener)
+
 Check e-book files for security and privacy issues.
 
 ## Motivation
