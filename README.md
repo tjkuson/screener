@@ -19,11 +19,9 @@ Screener aims to check e-book files for these issues so that you can read with p
 
 ## Get started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Prerequisites
 
-Screener requires [Python](https://www.python.org/about/gettingstarted/) (version 3.10 or newer).
+Screener requires [Python](https://www.python.org/about/gettingstarted/).
 
 ### Installing
 
@@ -43,9 +41,7 @@ poetry install
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-At present, this project is in early development and needs extra security and privacy checks and wider file format support more than anything else.
+Pull requests are welcome and appreciated highly. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
