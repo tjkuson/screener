@@ -39,6 +39,20 @@ To install Screener for development, ensure you have [Poetry](https://python-poe
 poetry install
 ```
 
+### Usage
+
+To check a file, try:
+
+```shell
+screener path/to/file.epub
+```
+
+For help:
+
+```shell
+screener --help
+```
+
 ## Contributing
 
 Pull requests are welcome and appreciated highly. For major changes, please open an issue first to discuss what you would like to change.
