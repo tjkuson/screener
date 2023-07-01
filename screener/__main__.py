@@ -26,9 +26,7 @@ def init_argparse() -> ArgumentParser:
     return parser
 
 
-def check_file(
-    file: Path,
-) -> Checker:
+def check_file(file: Path) -> Checker:
     """Check file."""
     checker = Checker(file)
     match extension := file.suffix:
