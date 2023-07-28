@@ -13,7 +13,7 @@ def html_contains_javascript(
     """Check if HTML contains JavaScript."""
     soup = BeautifulSoup(content, "html.parser")
     if scripts := soup.find_all("script"):
-        return [JavaScriptDiagnostic(checker.file_path.name) for _ in scripts]
+        return [JavaScriptDiagnostic(checker.file_path.name, str(s)) for s in scripts]
     return None
 
 
@@ -25,6 +25,7 @@ def html_contains_images_with_external_sources(
     images = soup.find_all("img")
     if external_images := tuple(i for i in images if i["src"].startswith("http")):
         return [
-            ExternalImageDiagnostic(checker.file_path.name) for _ in external_images
+            ExternalImageDiagnostic(checker.file_path.name, str(i))
+            for i in external_images
         ]
     return None

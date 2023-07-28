@@ -20,7 +20,7 @@ def init_argparse() -> ArgumentParser:
         "-v",
         "--version",
         action="version",
-        version=f"{parser.prog} version 0.4.1",
+        version=f"{parser.prog} version 0.5.0",
     )
     parser.add_argument("files", nargs="*")
     return parser

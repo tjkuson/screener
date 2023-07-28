@@ -29,7 +29,10 @@ class TestParser:
         unsafe_epub_file_checker = Checker(unsafe_epub_file)
         parse_epub(unsafe_epub_file_checker, unsafe_epub_file)
         assert unsafe_epub_file_checker.diagnostics == [
-            JavaScriptDiagnostic(unsafe_epub_file.name)
+            JavaScriptDiagnostic(
+                unsafe_epub_file.name,
+                '<script>alert("Hello, I am a JavaScript tag in your ebook!");</script>',  # noqa: E501
+            )
         ]
 
     def test_parse_azw3(self: TestParser) -> None:
@@ -44,8 +47,12 @@ class TestParser:
         unsafe_kindle_file_checker = Checker(unsafe_kindle_file)
         parse_kindle(unsafe_kindle_file_checker, unsafe_kindle_file)
         assert unsafe_kindle_file_checker.diagnostics == [
-            JavaScriptDiagnostic(unsafe_kindle_file.name),
-            JavaScriptDiagnostic(unsafe_kindle_file.name),
+            JavaScriptDiagnostic(
+                unsafe_kindle_file.name, '<script>alert("Boo!");</script>'
+            ),
+            JavaScriptDiagnostic(
+                unsafe_kindle_file.name, '<script>console.log("Hello!");</script>'
+            ),
         ]
 
     def test_parse_mobi(self: TestParser) -> None:
