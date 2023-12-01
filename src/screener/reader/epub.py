@@ -1,5 +1,3 @@
-"""Read epub files."""
-
 from __future__ import annotations
 
 import warnings
