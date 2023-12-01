@@ -3,8 +3,8 @@
 echo "Formatting with ssort..."
 ssort .
 
-echo "Formatting with autofix ruff violation checks..."
-ruff check --quiet --fix .
+echo "Apply Ruff lint autofixes..."
+ruff --quiet --fix .
 
-echo "Formatting with black..."
-black --quiet .
+echo "Formatting with Ruff..."
+ruff format .
