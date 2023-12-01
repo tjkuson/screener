@@ -6,7 +6,7 @@ authors = ["Tom Kuson <mail@tjkuson.me>"]
 license = "LGPL-3.0-only"
 readme = "README.md"
 packages = [
-    { include = "screener", from = "." },
+    { include = "screener", from = "src" },
 ]
 repository = "https://github.com/tjkuson/screener/"
 keywords = ["ebook", "security", "privacy", "epub", "mobi", "kindle"]
@@ -92,6 +92,9 @@ exclude = ["dist"]
 [[tool.mypy.overrides]]
 module = ["ebooklib", "ebooklib.epub", "mobi", "kindle"]
 ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+pythonpath = "src"
 
 [tool.poetry.scripts]
 screener = "screener.__main__:main"
