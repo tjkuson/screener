@@ -69,4 +69,4 @@ Screener was created by Tom Kuson ([@tjkuson](https://github.com/tjkuson)).
 
 ## Licence
 
-Screener is released under the [LGPL version 3](LICENCE).
+[MIT](LICENCE)
