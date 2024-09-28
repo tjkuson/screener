@@ -1,5 +1,3 @@
-"""Screener entry-point script."""
-
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
@@ -10,7 +8,6 @@ from screener.reader import EpubFileReader, KindleFileReader
 
 
 def init_argparse() -> ArgumentParser:
-    """Create argument parser for system args."""
     parser = ArgumentParser(
         prog="screener",
         usage="%(prog)s [OPTION] [FILE]...",
@@ -27,7 +24,6 @@ def init_argparse() -> ArgumentParser:
 
 
 def check_file(file: Path) -> Checker:
-    """Check file."""
     checker = Checker(file)
     match extension := file.suffix:
         case ".epub":
@@ -43,7 +39,6 @@ def check_file(file: Path) -> Checker:
 
 
 def main() -> None:
-    """Read system args and check e-book files."""
     parser = init_argparse()
     args = parser.parse_args()
     if not args.files:

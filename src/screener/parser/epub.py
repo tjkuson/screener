@@ -1,5 +1,3 @@
-"""Parse epub file to check that it is safe."""
-
 from pathlib import Path
 
 from ebooklib import ITEM_DOCUMENT
@@ -16,10 +14,6 @@ def parse_epub(
     checker: Checker,
     path_to_epub: Path,
 ) -> None:
-    """Parse epub to check that it is safe.
-
-    Mutates the checker object to add diagnostics.
-    """
     with EpubFileReader(path_to_epub) as epub:
         for item in epub.book.get_items_of_type(ITEM_DOCUMENT):
             content = item.get_content()
