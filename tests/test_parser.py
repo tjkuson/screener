@@ -1,13 +1,9 @@
-"""Test the parser module; for use with `pytest`."""
-
 from __future__ import annotations
 
 from pathlib import Path
 
 from screener.checker import Checker
-from screener.diagnostic import (
-    JavaScriptDiagnostic,
-)
+from screener.diagnostic import JavaScriptDiagnostic
 from screener.parser import parse_epub, parse_kindle
 
 
