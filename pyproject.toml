@@ -81,7 +81,7 @@ target-version = "py310"
 strict = true
 
 [tool.mypy]
-exclude = ["dist"]
+strict = true
 
 [[tool.mypy.overrides]]
 module = ["ebooklib", "ebooklib.epub", "mobi", "kindle"]
