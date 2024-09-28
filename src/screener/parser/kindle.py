@@ -1,5 +1,3 @@
-"""Parse kindle files."""
-
 from pathlib import Path
 
 from screener.checker import Checker
@@ -12,7 +10,6 @@ def parse_kindle(
     checker: Checker,
     path_to_kindle: Path | None,
 ) -> None:
-    """Parse kindle to check that it is safe."""
     if path_to_kindle is None:
         msg = "path_to_kindle cannot be None"
         raise ValueError(msg)

@@ -1,5 +1,3 @@
-"""Parse ebook files in different formats."""
-
 from .epub import parse_epub
 from .kindle import parse_kindle
 

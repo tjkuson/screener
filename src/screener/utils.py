@@ -1,5 +1,3 @@
-"""Screener utility functions."""
-
 from bs4 import BeautifulSoup
 
 from screener.checker import Checker
