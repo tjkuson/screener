@@ -1,4 +1,5 @@
 """Diagnostic information about a file."""
+
 from dataclasses import dataclass
 
 
